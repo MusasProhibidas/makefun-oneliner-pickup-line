@@ -1,7 +1,7 @@
 """make.fun entry: The Perfect Pickup Line.
 
 Writes the single pickup line from line.txt to
-/output/one-liner.txt (or $MAKEFUN_OUTPUT / $MAKEFUN_OUTPUT_DIR).
+/output/entry.txt (or $MAKEFUN_OUTPUT / $MAKEFUN_OUTPUT_DIR).
 No network access. Deterministic: every run writes the same bytes.
 After writing, the output is verified byte-for-byte against the
 source (SHA-256) so a partial or corrupted write fails loudly.
@@ -18,7 +18,7 @@ def _output_path() -> Path:
     if os.environ.get("MAKEFUN_OUTPUT"):
         return Path(os.environ["MAKEFUN_OUTPUT"])
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    return Path(out_dir) / "one-liner.txt"
+    return Path(out_dir) / "entry.txt"
 
 
 def _sha256(path: Path) -> str:
@@ -39,7 +39,7 @@ def main() -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(line, encoding="utf-8")
     if _sha256(SRC) != _sha256(out):
-        raise SystemExit("one-liner.txt copy mismatch: output bytes differ from source")
+        raise SystemExit("entry.txt copy mismatch: output bytes differ from source")
 
 
 if __name__ == "__main__":

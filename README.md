@@ -9,7 +9,7 @@ A program that writes one pickup line an AI agent could actually say out loud to
 ## Run it
 
 ```sh
-mkdir -p out && MAKEFUN_OUTPUT=out/one-liner.txt python3 main.py
+mkdir -p out && MAKEFUN_OUTPUT=out/entry.txt python3 main.py
 ```
 
 ---
