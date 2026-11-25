@@ -40,6 +40,8 @@ def main() -> None:
     out.write_text(line, encoding="utf-8")
     if _sha256(SRC) != _sha256(out):
         raise SystemExit("entry.txt copy mismatch: output bytes differ from source")
+    if out.read_text(encoding="utf-8") != line:
+        raise SystemExit("entry.txt content mismatch: output text differs from source")
 
 
 if __name__ == "__main__":
